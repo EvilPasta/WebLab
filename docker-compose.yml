@@ -3,8 +3,8 @@ services:
 
   app:
     build:
-      context: ../web_lab_3-master
-      dockerfile: ../web_lab_3-master/docker/Dockerfile
+      context: ../web_lab_4
+      dockerfile: ../web_lab_4/docker/Dockerfile
     image: digitalocean.com/php
     restart: unless-stopped
     tty: true

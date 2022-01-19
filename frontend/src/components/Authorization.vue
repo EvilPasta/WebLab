@@ -47,7 +47,7 @@ export default {
         authorization(){
             //тут добавление в бд корзины пользователя сделать
             const params = {
-                username: this.username, password: this.password
+                name: this.username, password: this.password
             }
             this.$http.post('/user', params)
             .then(response => this.checkCorrect(response.data.userId))
@@ -60,6 +60,7 @@ export default {
                 this.correct = true
                 this.$router.push('MainPage')
                 this.info = "Success"
+                localStorage.userId = this.userId;
             }
             else
             {
@@ -68,6 +69,11 @@ export default {
             console.log(this.correct)
         }
     },
+    mounted(){
+        if (localStorage.userId) {
+            this.userId = localStorage.userId;
+        }
+    }
 }
 </script>
 
