@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use App\Domain\Cart\Services\CartService;
+
 /**
 * Контроллер для управления корзиной
 */
 class CartController extends Controller
 {
+    
+    public function info($userId)
+    {
+        $service = new CartService();
+        return $service->getCart($userId);
+    }
 
     /**
     * Добавляет товар в корзину
@@ -18,8 +26,8 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $id = $request->get('id');
-        $count = $request->get('count', 1);
+        $service = new CartService();
+        $service->addToCart($request->get('id'), $request->get('count', 1), $request->get('userId'));
 
         // добавили товар в бд
 

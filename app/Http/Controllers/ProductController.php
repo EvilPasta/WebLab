@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\Domain\Product\Models\Product;
 
 /**
 * Контроллер для управления товарами
@@ -17,6 +16,7 @@ class ProductController extends Controller
     {
         $this->arr = Product::query()->get();
     }
+
     /**
     * Список товаров.
     * @return array

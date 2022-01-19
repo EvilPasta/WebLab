@@ -26,7 +26,7 @@
   </section>
 </template>
 
-
+// Вход по токену
 <script>
 export default {
 

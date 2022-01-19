@@ -15,7 +15,7 @@
 
       <nav>
         <a href="#"><h2 class = "about-header">Cabinet</h2></a>
-        <a href="#"><h2 class = "about-header">My cart</h2></a>
+        <a href="#"><h2 class = "about-header">My cart<CartInfo></CartInfo></h2></a>
         <router-link :to="{name: 'About'}">
           <h2 class = "about-header">About</h2>
         </router-link>

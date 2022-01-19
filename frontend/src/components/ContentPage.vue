@@ -61,7 +61,7 @@ export default {
       addToCart(product){
           //<добавить в бд корзины пользователя>
           const params = {
-              id: product.id, count: 1
+              id: product.id, count: 1, userId: localStorage.userId
           }
           this.$http.post('/cart', params)
           //.then(response => product.inCart = response.data.inCart)
