@@ -15,29 +15,36 @@ class UserController extends Controller
         $this->arr = User::query()->get();
     }
 
-     /**
-     * Список пользователей.
-     * @return array[]
-     */
-     public function list()
-     {
+    /**
+    * Список пользователей.
+    * @return array[]
+    */
+    public function list()
+    {
         $this->init();
         return $this->arr;
-     }
+    }
 
-     /**
-     * Информация о пользователе
-     * @param $id
-     * @return array
-     */
-     public function info($id)
-     {
-        $this->init();
-        return  $this->arr[$id-1];
-     }
+    /**
+    * Информация о пользователе
+    * @param $id
+    * @return array
+    */
+    public function info($id)
+    {
+        $product = Product::query()
+        ->where(['id' => $id])
+        ->first();
 
-     public function authorization(Request $request)
-     {
+        if ($product === null) {
+            throw new NotFoundHttpException('Product not found');
+        }
+
+        return $product;
+    }
+
+    public function authorization(Request $request)
+    {
         //$this->init();
         $arr = [];
         $arr = User::query()->where(['name' => $request->get('name')])->first();
@@ -60,5 +67,5 @@ class UserController extends Controller
                 ];
             }
         }
-     }
+    }
 }
